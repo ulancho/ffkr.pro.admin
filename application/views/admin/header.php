@@ -1,7 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-//$result = $this->user_model->getAllSettings();
-//$theme = $result->theme;
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -11,16 +9,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Вход</title>
+    <title>Админ панель</title>
     <meta name="description" content="">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
     <!--CSS-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/fontawesome-all.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/bootstrap.min.css' ?>">
     <link rel="stylesheet" href="<?php echo base_url().'public/css/main.css' ?>">
+    <!--JS-->
     <script src="<?=base_url()?>public/js/jquery.min.js"></script>
 </head>
 <body>

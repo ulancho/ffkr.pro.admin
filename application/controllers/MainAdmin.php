@@ -14,6 +14,7 @@ class MainAdmin extends CI_Controller
         $this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
     }
 
+//загрузка страницы логина
     public function index()
     {
 
@@ -27,6 +28,7 @@ class MainAdmin extends CI_Controller
         $this->load->view('admin/footer');
     }
 
+//Проверка и redirect на админ страничку
     public function login()
     {
 
@@ -41,23 +43,26 @@ class MainAdmin extends CI_Controller
             )
         );
 
-        if ($this->form_validation->run() == FALSE)
-        {
+        if ($this->form_validation->run() == FALSE) {
             $this->load->view('admin/header');
             $this->load->view('admin/container');
             $this->load->view('admin/login_form');
             $this->load->view('admin/footer');
-        }
-        else
-        {
+        } else {
             $login = $this->input->post('email');
             $pwd = $this->input->post('password');
-            $userInfo = $this->UserModel->checkLogin($login,$pwd);
-            
-            if(!$userInfo)
-            {
+            $userInfo = $this->UserModel->checkLogin($login, $pwd);
+
+            if (!$userInfo) {
                 $this->session->set_flashdata('flash_message', 'Неверный пароль или адрес электронной почты.');
-                redirect(site_url().'mainAdmin/login');
+                redirect(site_url() . 'mainAdmin/login');
+            } else {
+                $array = array(
+                    'id' => $userInfo->id,
+                    'login' => $userInfo->login
+                );
+                $this->session->set_userdata($array);
+                redirect(site_url() . 'mainAdmin/admin');
             }
 
 
@@ -65,9 +70,25 @@ class MainAdmin extends CI_Controller
 
     }
 
+//Загузка админ странички
     public function admin()
     {
-        echo "123";
+        $arraydata = $this->session->userdata['login'];
+        if (empty($arraydata)) {
+            redirect(site_url() . 'mainAdmin/');
+        } else {
+            $this->load->view('admin/header');
+            $this->load->view('admin/navbar');
+            $this->load->view('admin/footer');
+        }
+
+    }
+
+    //Logout
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(site_url() . 'mainAdmin/');
     }
 
 
