@@ -1,0 +1,106 @@
+/*button*/
+.pulse-button {
+    box-shadow: 0 0 0 0 rgba(240, 241, 243,0.7);
+    border-radius: 40px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    -webkit-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    -moz-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    -ms-animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+    animation: pulse 1s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+.pulse-button:hover
+{
+    cursor: pointer;
+    -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
+}
+/*animation of button*/
+@-webkit-keyframes pulse {to {box-shadow: 0 0 0 25px rgba(232, 76, 61, 0);}}
+@-moz-keyframes pulse {to {box-shadow: 0 0 0 25px rgba(232, 76, 61, 0);}}
+@-ms-keyframes pulse {to {box-shadow: 0 0 0 25px rgba(232, 76, 61, 0);}}
+@keyframes pulse {to {box-shadow: 0 0 0 25px rgba(232, 76, 61, 0);}}
+/*...button*/
+
+/*trainers blocks*/
+.tr-blocks{height: 400px}
+.img-trainers {width:100%; height: 400px;}
+
+.tr-modal{
+    width: 120%;
+    border-radius: unset;
+}
+/*...trainers blocks*/
+/*обучение*/
+.block-action{
+    text-align: center;
+    height: auto;
+    width: 40%;
+    color: black!important;
+    background: #ffffff;
+    -moz-box-shadow: 0px 0px 19px #ffffff;
+    -webkit-box-shadow: 0px 0px 19px #ffffff;
+    box-shadow: 0px 0px 19px #ffffff;
+}
+.ob-blocks{
+    height: 180px;
+}
+.img-ob{
+    width:100%; height: 180px;
+}
+.img-modal{
+    height: auto;
+    width: 100%;
+}
+.ob-blocks:hover{
+    cursor: zoom-in;
+    opacity: 0.5;
+}
+/*...обучение*/
+/*Pitanie*/
+.pit-block{
+    height: auto;
+    width: 100%;
+    /*border: 1px solid red;*/
+    background-color: #ffffff;
+    -moz-box-shadow: -2px 4px 21px #000000;
+    -webkit-box-shadow: -2px 4px 21px #000000;
+    box-shadow: -2px 4px 21px #000000;
+}
+.img-pit{
+    height: 180px;
+    width: 190px;
+    /*border: 1px solid black;*/
+    margin:0 auto;
+}
+.pit-img{height: 180px;width: 190px;}
+.content-pit{
+    height: auto;
+    width: 100%;
+    /*border: 1px solid navy;*/
+    padding: 5px;
+}
+.pit-gallery{height: 330px; width:100%;}
+.img-fluid{height:180px; width:100%;}
+.green-hover:hover{color:lime;cursor:pointer}
+/*...Pitanie*/
+/*personal internet-trener*/
+.block-of-persoanl-trainers{
+    height: auto;
+    width: 100%;
+    background: white;
+    border: 1px solid #c8d8ff;
+    -moz-box-shadow: 3px 1px 6px #000000;
+    -webkit-box-shadow: 3px 1px 6px #000000;
+    box-shadow: 3px 1px 6px #000000;
+}
+.text-shadow{
+    text-shadow:7px 2px 6px #000000;
+}
+.precent-block{
+    height: 100px;
+    width: 100px;
+    background: red;
+    z-index: 9999;
+}
+/*...personal internet-trener*/

@@ -6,3 +6,13 @@
 .error{
     color: red;
 }
+.photo_user{
+    height: 100px;
+    width: 100px;
+}
+.pag{
+    text-align: center;
+    color: #0b05ff;
+    font-size: 22px;
+    letter-spacing: 5px;
+}
