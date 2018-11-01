@@ -130,7 +130,6 @@ class MainSections extends CI_Controller
     public function deletesportpit($id)
     {
         $table = 'spo';
-//        $id = 10;
         $result = $this->AdminModels->deleteOne($table, $id);
         if ($result == FALSE){
             $this->session->set_flashdata('flash_message', 'Упс! Произошла ошибка');
@@ -139,6 +138,15 @@ class MainSections extends CI_Controller
             $this->session->set_flashdata('success_message', 'Успешно удален!');
         }
         redirect(site_url() . 'MainSections/allsportpit');
+    }
+
+    public function updateSp($id){
+        echo $id;
+        $this->load->view('admin/header');
+        $this->load->view('admin/navbar');
+        $this->load->view('admin/container');
+        $this->load->view('admin/updateSportPit');
+        $this->load->view('admin/footer');
     }
 
 

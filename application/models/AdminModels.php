@@ -32,24 +32,38 @@ class AdminModels extends CI_Model
         return $query->result();
 
     }
-//    Select with where
 
-
+//    Select with where po id
+    public function getId($tablename,$id)
+    {
+        $sql = "SELECT * FROM $tablename WHERE id = ?";
+        $query= $this->db->query($sql, array($id));
+        if ($query){
+            return $query->row();
+        }
+        else{
+            return false;
+        }
+    }
+// Удаление изобр из папки
+    private function deleteFiles($name){
+        return unlink(FCPATH."public/images/sportpit/".$name);
+    }
 
 // Delete по id и tablename
-public function deleteOne($table,$id){
-
-
-    $this->db->where('id', $id);
-    $this->db->delete($table);
-
-    if ($this->db->affected_rows() == '1') {
-        return TRUE;
+    public function deleteOne($table, $id)
+    {
+        $con = $this->getId($table,$id);
+        $name = $con->sp_imgname;
+        $this->db->where('id', $id);
+        $this->db->delete($table);
+        if ($this->db->affected_rows() == '1') {
+            $this->deleteFiles($name);
+            return TRUE;
+        } else {
+            return FAlSE;
+        }
     }
-    else {
-        return FAlSE;
-    }
-}
 
 }
 
