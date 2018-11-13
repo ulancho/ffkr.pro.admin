@@ -24,6 +24,28 @@ class AdminModels extends CI_Model
         return $this->db->query($q);
     }
 
+//  Редактирование
+public function updatepit($arr){
+        $data = array(
+        'sp_name' => $arr['name'],
+        'sp_price' => $arr['price'],
+        'sp_inf' => $arr['text'],
+        'sp_sections' => $arr['section'],
+        'sp_imgname' => $arr['imgname']
+    );
+    $this->db->where('id', $arr['id']);
+    $q = $this->db->update('spo', $data);
+
+    $success = $this->db->affected_rows();
+
+    if(!$success){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 // Select ALL
     public function selectAll($table, $num = null, $offset = null)
     {
@@ -49,7 +71,6 @@ class AdminModels extends CI_Model
     private function deleteFiles($name){
         return unlink(FCPATH."public/images/sportpit/".$name);
     }
-
 // Delete по id и tablename
     public function deleteOne($table, $id)
     {

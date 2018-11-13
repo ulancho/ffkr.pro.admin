@@ -35,9 +35,9 @@ class MainSections extends CI_Controller
     {
         $config['upload_path'] = './public/images/' . $location . '/';
         $config['allowed_types'] = 'jpeg|jpg|png';
-        $config['max_size'] = 500;
-        $config['max_width'] = 700;
-        $config['max_height'] = 700;
+        $config['max_size'] = 1000;
+        $config['max_width'] = 1000;
+        $config['max_height'] = 1000;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
 
@@ -54,16 +54,16 @@ class MainSections extends CI_Controller
     public function addSportpit()
     {
 
-        $this->form_validation->set_rules('name', 'First Name', 'required|max_length[60]',
+        $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
             array('required' => 'Заполните название.',
                 'max_length' => 'Должно содержать не больше 60 символов.'
             )
         );
-        $this->form_validation->set_rules('price', 'Last Name', 'required',
+        $this->form_validation->set_rules('price', 'Last Name', 'required|trim',
             array('required' => 'Заполните цену.')
         );
 
-        $this->form_validation->set_rules('text', 'role', 'required|max_length[220]',
+        $this->form_validation->set_rules('text', 'role', 'required|trim|max_length[220]',
             array('required' => 'Заполните.',
                 'max_length' => 'Должно содержать не больше 220 символов.'
             )
@@ -131,22 +131,91 @@ class MainSections extends CI_Controller
     {
         $table = 'spo';
         $result = $this->AdminModels->deleteOne($table, $id);
-        if ($result == FALSE){
+        if ($result == FALSE) {
             $this->session->set_flashdata('flash_message', 'Упс! Произошла ошибка');
-        }
-        else{
+        } else {
             $this->session->set_flashdata('success_message', 'Успешно удален!');
         }
         redirect(site_url() . 'MainSections/allsportpit');
     }
 
-    public function updateSp($id){
-        echo $id;
-        $this->load->view('admin/header');
-        $this->load->view('admin/navbar');
-        $this->load->view('admin/container');
-        $this->load->view('admin/updateSportPit');
-        $this->load->view('admin/footer');
+// для загрузки станички  редактирования
+    public function updateSp($id)
+    {
+        if ($id) {
+            $table = 'spo';
+            $data['sportpit'] = $this->AdminModels->getId($table, $id);
+            $data['imgerror'] = '';
+            if ($data['sportpit'] != false) {
+                $this->load->view('admin/header');
+                $this->load->view('admin/navbar');
+                $this->load->view('admin/container');
+                $this->load->view('admin/updateSportPit', $data);
+                $this->load->view('admin/footer');
+            } else {
+                redirect(site_url() . 'mainAdmin/');
+            }
+
+        } else {
+            redirect(site_url() . 'mainAdmin/');
+        }
+
+    }
+
+//    для редактирования
+    public function updateSportpit()
+    {
+        $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
+            array('required' => 'Заполните название.',
+                'max_length' => 'Должно содержать не больше 60 символов.'
+            )
+        );
+        $this->form_validation->set_rules('price', 'Last Name', 'required|trim',
+            array('required' => 'Заполните цену.')
+        );
+
+        $this->form_validation->set_rules('text', 'role', 'required|trim|max_length[220]',
+            array('required' => 'Заполните.',
+                'max_length' => 'Должно содержать не больше 220 символов.'
+            )
+        );
+
+        $id = $this->input->post('id');
+        $table = 'spo';
+        $data['sportpit'] = $this->AdminModels->getId($table, $id);
+        if ($this->form_validation->run() == FALSE) {
+            $data['imgerror'] = '';
+            $this->load->view('admin/header');
+            $this->load->view('admin/navbar', $data);
+            $this->load->view('admin/container');
+            $this->load->view('admin/updateSportPit');
+            $this->load->view('admin/footer');
+        } else {
+            $array['id'] = $id;
+            $array['name'] = $this->input->post('name');
+            $array['price'] = $this->input->post('price');
+            $array['text'] = $this->input->post('text');
+            $array['section'] = $this->input->post('section');
+            $location = 'sportpit';
+            $imgname = 'photo';
+            $img = $_FILES['photo'];
+            $photoname = $img['name'];
+            if(empty($photoname)){
+                $array['imgname'] = '';
+            }
+            else{
+                $ph = $this->do_upload($location, $imgname);
+                $array['imgname'] = $ph['upload_data']['file_name'];
+            }
+
+            if (!$this->AdminModels->updatepit($array)) {
+                $this->session->set_flashdata('flash_message', 'Не удалось обновить данные!');
+            } else {
+                $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
+            }
+            redirect(site_url() . 'MainSections/updateSp/'.$id);
+
+        }
     }
 
 
