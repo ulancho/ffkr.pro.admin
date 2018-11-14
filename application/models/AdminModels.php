@@ -10,7 +10,7 @@ class AdminModels extends CI_Model
 
     }
 
-//добавление спортивного питания
+// добавление спортивного питания
     public function addpit($d)
     {
         $string = array(
@@ -24,27 +24,38 @@ class AdminModels extends CI_Model
         return $this->db->query($q);
     }
 
-//  Редактирование
-public function updatepit($arr){
-        $data = array(
-        'sp_name' => $arr['name'],
-        'sp_price' => $arr['price'],
-        'sp_inf' => $arr['text'],
-        'sp_sections' => $arr['section'],
-        'sp_imgname' => $arr['imgname']
-    );
-    $this->db->where('id', $arr['id']);
-    $q = $this->db->update('spo', $data);
+// Редактирование
+    public function updatepit($arr)
+    {
+        if (isset($arr['imgname'])){
+            $data = array(
+                'sp_name' => $arr['name'],
+                'sp_price' => $arr['price'],
+                'sp_inf' => $arr['text'],
+                'sp_sections' => $arr['section'],
+                'sp_imgname' => $arr['imgname']
+            );
+        }
+        else{
+            $data = array(
+                'sp_name' => $arr['name'],
+                'sp_price' => $arr['price'],
+                'sp_inf' => $arr['text'],
+                'sp_sections' => $arr['section'],
+            );
+        }
 
-    $success = $this->db->affected_rows();
+        $this->db->where('id', $arr['id']);
+        $q = $this->db->update('spo', $data);
 
-    if(!$success){
-        return false;
+        $success = $this->db->affected_rows();
+
+        if (!$success) {
+            return false;
+        } else {
+            return true;
+        }
     }
-    else{
-        return true;
-    }
-}
 
 // Select ALL
     public function selectAll($table, $num = null, $offset = null)
@@ -55,26 +66,28 @@ public function updatepit($arr){
 
     }
 
-//    Select with where po id
-    public function getId($tablename,$id)
+// Select with where po id
+    public function getId($tablename, $id)
     {
         $sql = "SELECT * FROM $tablename WHERE id = ?";
-        $query= $this->db->query($sql, array($id));
-        if ($query){
+        $query = $this->db->query($sql, array($id));
+        if ($query) {
             return $query->row();
-        }
-        else{
+        } else {
             return false;
         }
     }
+
 // Удаление изобр из папки
-    private function deleteFiles($name){
-        return unlink(FCPATH."public/images/sportpit/".$name);
+    private function deleteFiles($name)
+    {
+        return unlink(FCPATH . "public/images/sportpit/" . $name);
     }
+
 // Delete по id и tablename
     public function deleteOne($table, $id)
     {
-        $con = $this->getId($table,$id);
+        $con = $this->getId($table, $id);
         $name = $con->sp_imgname;
         $this->db->where('id', $id);
         $this->db->delete($table);

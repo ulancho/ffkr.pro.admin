@@ -79,6 +79,7 @@ class MainAdmin extends CI_Controller
         } else {
             $this->load->view('admin/header');
             $this->load->view('admin/navbar');
+            $this->load->view('admin/indexcontainer');
             $this->load->view('admin/footer');
         }
 

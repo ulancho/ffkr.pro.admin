@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" href="<?php echo base_url().'public/fontawesome/css/fontawesome-all.css' ?>">
     <link rel="stylesheet" href="<?php echo base_url().'public/css/bootstrap.min.css' ?>">
     <link rel="stylesheet" href="<?php echo base_url().'public/css/main.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/cards.css' ?>">
     <!--JS-->
     <script src="<?=base_url()?>public/js/jquery.min.js"></script>
 </head>

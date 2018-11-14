@@ -112,7 +112,7 @@ class MainSections extends CI_Controller
     {
         $config['base_url'] = base_url() . 'MainSections/allsportpit/';
         $config['total_rows'] = $this->db->count_all('spo');
-        $config['per_page'] = 1;
+        $config['per_page'] = 10;
         $config['full_tag_open'] = '<p class="pag">';
         $config['full_tag_close'] = '</p>';
         $this->pagination->initialize($config);
@@ -131,10 +131,16 @@ class MainSections extends CI_Controller
     {
         $table = 'spo';
         $result = $this->AdminModels->deleteOne($table, $id);
+        $result2 = $this->AdminModels->getId($table, $id);
+        if ($result != false) {
+            $imgname = $result->sp_imgname;
+        }
         if ($result == FALSE) {
             $this->session->set_flashdata('flash_message', 'Упс! Произошла ошибка');
         } else {
             $this->session->set_flashdata('success_message', 'Успешно удален!');
+            $file = 'spotrpit';
+            $this->deleteFiles($file, $imgname);
         }
         redirect(site_url() . 'MainSections/allsportpit');
     }
@@ -162,7 +168,12 @@ class MainSections extends CI_Controller
 
     }
 
-//    для редактирования
+// unlink - $file,imgname
+    private function deleteFiles($file,$imgname){
+       unlink(FCPATH."public/images/$file/".$imgname);
+    }
+
+// для редактирования спортивного питание
     public function updateSportpit()
     {
         $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
@@ -200,12 +211,18 @@ class MainSections extends CI_Controller
             $imgname = 'photo';
             $img = $_FILES['photo'];
             $photoname = $img['name'];
-            if(empty($photoname)){
-                $array['imgname'] = '';
-            }
-            else{
+            if (empty($photoname)) {
+
+            } else {
                 $ph = $this->do_upload($location, $imgname);
                 $array['imgname'] = $ph['upload_data']['file_name'];
+                $table = 'spo';
+                $result = $this->AdminModels->getId($table, $id);
+                if ($result != false) {
+                    $namefile = $result->sp_imgname;
+                    $file = 'sportpit';
+                    $this->deleteFiles($file, $namefile);
+                }
             }
 
             if (!$this->AdminModels->updatepit($array)) {
@@ -213,10 +230,113 @@ class MainSections extends CI_Controller
             } else {
                 $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
             }
-            redirect(site_url() . 'MainSections/updateSp/'.$id);
+            redirect(site_url() . 'MainSections/updateSp/' . $id);
 
         }
     }
 
+    // для загрузки всех спорт оборудований
+    public function allsporteq()
+    {
+        $config['base_url'] = base_url() . 'MainSections/allsporteq/';
+        $config['total_rows'] = $this->db->count_all('equipment');
+        $config['per_page'] = 10;
+        $config['full_tag_open'] = '<p class="pag">';
+        $config['full_tag_close'] = '</p>';
+        $this->pagination->initialize($config);
+        $table = 'equipment';
+        $data['sportpits'] = $this->AdminModels->selectAll($table, $config['per_page'], $this->uri->segment(3));
+
+        $this->load->view('admin/header');
+        $this->load->view('admin/navbar');
+        $this->load->view('admin/container');
+        $this->load->view('admin/allsporteq', $data);
+        $this->load->view('admin/footer');
+    }
+
+    // для загрузки станички  редактирования
+    public function updateEq($id)
+    {
+        if ($id) {
+            $table = 'equipment';
+            $data['sportpit'] = $this->AdminModels->getId($table, $id);
+            $data['imgerror'] = '';
+            if ($data['sportpit'] != false) {
+                $this->load->view('admin/header');
+                $this->load->view('admin/navbar');
+                $this->load->view('admin/container');
+                $this->load->view('admin/updateEq', $data);
+                $this->load->view('admin/footer');
+            } else {
+                redirect(site_url() . 'mainAdmin/');
+            }
+
+        } else {
+            redirect(site_url() . 'mainAdmin/');
+        }
+
+    }
+
+// для редактирования спортивного питание
+    public function updatefunctionEq()
+    {
+        $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
+            array('required' => 'Заполните название.',
+                'max_length' => 'Должно содержать не больше 60 символов.'
+            )
+        );
+        $this->form_validation->set_rules('price', 'Last Name', 'required|trim',
+            array('required' => 'Заполните цену.')
+        );
+
+        $this->form_validation->set_rules('text', 'role', 'required|trim|max_length[220]',
+            array('required' => 'Заполните.',
+                'max_length' => 'Должно содержать не больше 220 символов.'
+            )
+        );
+
+        $id = $this->input->post('id');
+        $table = 'spo';
+        $data['sportpit'] = $this->AdminModels->getId($table, $id);
+        if ($this->form_validation->run() == FALSE) {
+            $data['imgerror'] = '';
+            $this->load->view('admin/header');
+            $this->load->view('admin/navbar', $data);
+            $this->load->view('admin/container');
+            $this->load->view('admin/updateSportPit');
+            $this->load->view('admin/footer');
+        } else {
+            $array['id'] = $id;
+            $array['name'] = $this->input->post('name');
+            $array['price'] = $this->input->post('price');
+            $array['text'] = $this->input->post('text');
+            $array['section'] = $this->input->post('section');
+            $location = 'sportpit';
+            $imgname = 'photo';
+            $img = $_FILES['photo'];
+            $photoname = $img['name'];
+            if (empty($photoname)) {
+
+            } else {
+                $ph = $this->do_upload($location, $imgname);
+                $array['imgname'] = $ph['upload_data']['file_name'];
+                $table = 'spo';
+                $result = $this->AdminModels->getId($table, $id);
+                if ($result != false) {
+                    $namefile = $result->sp_imgname;
+                    $file = 'sportpit';
+                    $this->deleteFiles($file, $namefile);
+                }
+            }
+
+            if (!$this->AdminModels->updatepit($array)) {
+                $this->session->set_flashdata('flash_message', 'Не удалось обновить данные!');
+            } else {
+                $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
+            }
+            redirect(site_url() . 'MainSections/updateSp/' . $id);
+
+        }
+    }
 
 }

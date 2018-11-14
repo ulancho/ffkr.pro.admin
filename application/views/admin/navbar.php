@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="<?php echo site_url();?>main/">Федерация Фитнеса</a>
+                  <a class="navbar-brand" href="<?php echo site_url();?>mainAdmin/admin">Федерация Фитнеса</a>
                 </div>
             
                 <!-- ссылки итд -->

@@ -2,7 +2,7 @@
     <section class="content-header">
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i>Разделы</a></li>
-            <li><a href="#">Спортивное питание</a></li>
+            <li><a href="#">Спортивное оборудование</a></li>
         </ol>
         <br/>
     </section>
@@ -42,10 +42,10 @@
         {
             echo '<tr>';
             echo '<td>'.$i++.'</td>';
-            echo '<td><img class="photo_user" src="'.site_url().'public/images/sportpit/'.$row->sp_imgname.'" alt="">'.'</td>';
-            echo '<td>'.$row->sp_name.'</td>';
-            echo '<td>'.$row->sp_price.'</td>';
-            echo '<td><a href="'.site_url().'MainSections/updateSp/'.$row->id.'"><button type="button" class="btn btn-primary">Редактировать</button></a></td>';
+            echo '<td><img class="photo_user" src="'.site_url().'public/images/sporteq/'.$row->eq_imgname.'" alt="">'.'</td>';
+            echo '<td>'.$row->eq_name.'</td>';
+            echo '<td>'.$row->eq_price.'</td>';
+            echo '<td><a href="'.site_url().'MainSections/updateEq/'.$row->id.'"><button type="button" class="btn btn-primary">Редактировать</button></a></td>';
             echo '<td><a href="'.site_url().'MainSections/deletesportpit/'.$row->id.'"><button type="button" class="btn btn-danger">Удалить</button></a></td>';
             echo '</tr>';
         }

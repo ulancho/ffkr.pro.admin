@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 //Admin page
 $route['updateSportPit/(:num)'] = 'MainSections/updateSp/$1';
+$route['updateEq/(:num)'] = 'MainSections/updateEq/$1';
