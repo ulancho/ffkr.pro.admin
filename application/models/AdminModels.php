@@ -24,7 +24,7 @@ class AdminModels extends CI_Model
         return $this->db->query($q);
     }
 
-// Редактирование
+// Редактирование Спортивного питание
     public function updatepit($arr)
     {
         if (isset($arr['imgname'])){
@@ -56,7 +56,36 @@ class AdminModels extends CI_Model
             return true;
         }
     }
+// Редактирование Спортивного оборудование
+    public function updateEquipment($arr)
+    {
+        if (isset($arr['imgname'])){
+            $data = array(
+                'eq_name' => $arr['name'],
+                'eq_price' => $arr['price'],
+                'eq_inf' => $arr['text'],
+                'eq_imgname' => $arr['imgname']
+            );
+        }
+        else{
+            $data = array(
+                'eq_name' => $arr['name'],
+                'eq_price' => $arr['price'],
+                'eq_inf' => $arr['text'],
+            );
+        }
 
+        $this->db->where('id', $arr['id']);
+        $q = $this->db->update('spo', $data);
+
+        $success = $this->db->affected_rows();
+
+        if (!$success) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 // Select ALL
     public function selectAll($table, $num = null, $offset = null)
     {

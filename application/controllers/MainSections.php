@@ -296,14 +296,14 @@ class MainSections extends CI_Controller
         );
 
         $id = $this->input->post('id');
-        $table = 'spo';
+        $table = 'equipment';
         $data['sportpit'] = $this->AdminModels->getId($table, $id);
         if ($this->form_validation->run() == FALSE) {
             $data['imgerror'] = '';
             $this->load->view('admin/header');
             $this->load->view('admin/navbar', $data);
             $this->load->view('admin/container');
-            $this->load->view('admin/updateSportPit');
+            $this->load->view('admin/updateEq');
             $this->load->view('admin/footer');
         } else {
             $array['id'] = $id;
@@ -311,7 +311,7 @@ class MainSections extends CI_Controller
             $array['price'] = $this->input->post('price');
             $array['text'] = $this->input->post('text');
             $array['section'] = $this->input->post('section');
-            $location = 'sportpit';
+            $location = 'sporteq';
             $imgname = 'photo';
             $img = $_FILES['photo'];
             $photoname = $img['name'];
@@ -324,17 +324,17 @@ class MainSections extends CI_Controller
                 $result = $this->AdminModels->getId($table, $id);
                 if ($result != false) {
                     $namefile = $result->sp_imgname;
-                    $file = 'sportpit';
+                    $file = 'sporteq';
                     $this->deleteFiles($file, $namefile);
                 }
             }
 
-            if (!$this->AdminModels->updatepit($array)) {
+            if (!$this->AdminModels->updateEquipment($array)) {
                 $this->session->set_flashdata('flash_message', 'Не удалось обновить данные!');
             } else {
                 $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
             }
-            redirect(site_url() . 'MainSections/updateSp/' . $id);
+            redirect(site_url() . 'MainSections/updateEq/' . $id);
 
         }
     }

@@ -1,4 +1,3 @@
-
 <div class="col-lg-4 col-lg-offset-4">
         <strong><center>СПОРТИВНОЕ ОБОРУДОВАНИЕ</center></strong>
     <a href="<?=base_url()?>MainSections/allsportpit" class="text-primary">ПЕРЕЙТИ К ПРОСМОТРУ</a>
@@ -29,7 +28,6 @@
         <?php echo form_textarea(array('name'=>'text', 'id'=> 'text', 'placeholder'=>'Информация', 'class'=>'form-control', 'value'=> $sportpit->eq_inf)); ?>
         <?php echo form_error('text');?>
     </div>
-
     <div class="form-group">
         <label for="photo">Фото:</label>
         <input id="photo" name="photo" type="file" class="form-control" accept="image/*" >
