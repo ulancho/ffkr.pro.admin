@@ -11,7 +11,52 @@ class Main extends CI_Controller
     public function index(){
         $this->load->view('main/header/header');
         $this->load->view('main/index');
+        $this->load->view('main/modal');
         $this->load->view('main/footer/footer');
     }
+
+    public function clubs(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/clubs');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function trainers(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/trainers');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function one_clubs(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/one-clubs');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function personal_trainer(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/personal-trainer');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function contact(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/contact-us');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function news(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/news');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function one_news(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/one-news');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+
 
 }

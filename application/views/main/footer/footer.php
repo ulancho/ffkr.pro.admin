@@ -25,44 +25,6 @@
                 </div>
             </div>
             <!-- /.footer-link -->
-
-            <!-- The Modal -->
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title text-center">Форма обратной связи</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div class="suc_img" style="display:none;margin: 0 auto">
-                                <img src="images/ok.png" style="">
-                            </div>
-
-                            <div class="modals-content">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Имя">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Тел:">
-                                </div>
-                                <input type="submit" class="btn btn-default addZayavka" value="Отправить">
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <!-- /.The Modal -->
-
             <!-- footer-contact -->
             <div class="col-xl-3 col-lg-2 col-md-3 col-sm-6 col-6 ">
                 <div class="footer-widget ">

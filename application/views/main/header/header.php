@@ -54,14 +54,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12">
-                    <div class="logo"> <a href="index.php"><img style="height: 65px;width: 190px" src="<?=base_url()?>public/images/logoat.jpg" alt=""> </a> </div>
+                    <div class="logo"> <a href="<?=base_url()?>"><img style="height: 65px;width: 115px" src="<?=base_url()?>public/images/logoat.jpg" alt=""> </a> </div>
                 </div>
                 <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12">
                     <!-- navigations-->
                     <div class="navigation">
                         <div id="navigation">
                             <ul>
-                                <li class="active"><a href="index.php">ГЛАВНАЯ</a></li>
+                                <li class="active"><a href="<?=base_url()?>">ГЛАВНАЯ</a></li>
                                 <li class="has-sub"><a href="#">НАШИ УСЛУГИ</a>
                                     <ul>
                                         <li><a href="#">Организация соревнований</a></li>
@@ -71,15 +71,15 @@
                                         <li><a href="equipment.html">Спортивное оборудование</a></li>
                                     </ul>
                                 </li>
-                                <li class="active"><a href="class-list.html">Клубы города</a></li>
-                                <li class="has-sub"><a href="trainers.html">Тренеры</a>
+                                <li class="active"><a href="<?=base_url()?>Main/clubs">Клубы города</a></li>
+                                <li class="has-sub"><a href="#">Тренеры</a>
                                     <ul>
-                                        <li><a href="trainers.html">Персональный тренер</a></li>
-                                        <li><a href="personal-trainer.html">Персональный интернет-тренер</a></li>
+                                        <li><a href="<?=base_url()?>main/trainers">Персональный тренер</a></li>
+                                        <li><a href="<?=base_url()?>main/personal_trainer">Персональный интернет-тренер</a></li>
                                     </ul>
                                 </li>
-                                <li class=""><a href="blog-default.html">Новости</a></li>
-                                <li><a href="contact-us.html">КОНТАКТЫ</a></li>
+                                <li class=""><a href="<?=base_url()?>main/news">Новости</a></li>
+                                <li><a href="<?=base_url()?>main/contact">КОНТАКТЫ</a></li>
                             </ul>
                         </div>
                     </div>
