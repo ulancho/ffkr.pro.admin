@@ -65,8 +65,8 @@
                                 <li class="has-sub"><a href="#">НАШИ УСЛУГИ</a>
                                     <ul>
                                         <li><a href="#">Организация соревнований</a></li>
-                                        <li><a href="obuchenie.html">Обучение</a></li>
-                                        <li><a href="pitanie.html">Спортивное питание</a></li>
+                                        <li><a href="<?=base_url()?>main/education">Обучение</a></li>
+                                        <li><a href="<?=base_url()?>main/sport_eat">Спортивное питание</a></li>
                                         <li><a href="farma.html">Фарма</a></li>
                                         <li><a href="equipment.html">Спортивное оборудование</a></li>
                                     </ul>

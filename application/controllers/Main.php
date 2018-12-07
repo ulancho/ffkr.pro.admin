@@ -57,6 +57,21 @@ class Main extends CI_Controller
         $this->load->view('main/modal');
         $this->load->view('main/footer/footer');
     }
+    public function error_page(){
+        $this->load->view('404');
+    }
+    public function education(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/education');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
+    public function sport_eat(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/sport_eat');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
 
 
 }
