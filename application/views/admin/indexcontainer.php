@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <a href="<?=base_url()?>MainSections/allsportpit">
+        <a href="<?=base_url()?>admin/MainSections/allsportpit">
         <div class="col-md-3">
             <div class="card-counter primary">
                 <i class="fa fa-code-fork"></i>
@@ -9,7 +9,7 @@
             </div>
         </div>
         </a>
-        <a href="<?=base_url()?>MainSections/allsporteq">
+        <a href="<?=base_url()?>admin/MainSections/allsporteq">
         <div class="col-md-3">
             <div class="card-counter danger">
                 <i class="fa fa-ticket"></i>

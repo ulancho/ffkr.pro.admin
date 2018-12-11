@@ -20,7 +20,7 @@ class MainSections extends CI_Controller
         }
     }
 
-//  Грузит страничку добавление спорт питания
+     //  Грузит страничку добавление спорт питания
     public function sportpit()
     {
         $array['imgerror'] = '';
@@ -30,7 +30,7 @@ class MainSections extends CI_Controller
         $this->load->view('admin/footer');
     }
 
-// для загрузки фото
+     // для загрузки фото
     public function do_upload($location, $name)
     {
         $config['upload_path'] = './public/images/' . $location . '/';
@@ -50,7 +50,7 @@ class MainSections extends CI_Controller
         }
     }
 
-//  для добавления в бд.
+     //  для добавления в бд.
     public function addSportpit()
     {
 
@@ -91,7 +91,7 @@ class MainSections extends CI_Controller
                 } else {
                     $this->session->set_flashdata('success_message', 'Данные успешно добавлены.');
                 }
-                redirect(site_url() . 'MainSections/addSportpit');
+                redirect(site_url() . 'admin/MainSections/addSportpit');
 
             } else {
                 $array['imgerror'] = $ph['error'];
@@ -107,17 +107,17 @@ class MainSections extends CI_Controller
 
     }
 
-// для загрузки всех спорт питаний
+    // для загрузки всех спорт питаний
     public function allsportpit()
     {
-        $config['base_url'] = base_url() . 'MainSections/allsportpit/';
+        $config['base_url'] = base_url() . 'admin/MainSections/allsportpit/';
         $config['total_rows'] = $this->db->count_all('spo');
         $config['per_page'] = 10;
         $config['full_tag_open'] = '<p class="pag">';
         $config['full_tag_close'] = '</p>';
         $this->pagination->initialize($config);
         $table = 'spo';
-        $data['sportpits'] = $this->AdminModels->selectAll($table, $config['per_page'], $this->uri->segment(3));
+        $data['sportpits'] = $this->AdminModels->selectAll($table, $config['per_page'], $this->uri->segment(4));
 
         $this->load->view('admin/header');
         $this->load->view('admin/navbar');
@@ -126,7 +126,7 @@ class MainSections extends CI_Controller
         $this->load->view('admin/footer');
     }
 
-// для удаление одного спорт питания
+    // для удаление одного спорт питания
     public function deletesportpit($id)
     {
         $table = 'spo';
@@ -142,10 +142,10 @@ class MainSections extends CI_Controller
             $file = 'spotrpit';
             $this->deleteFiles($file, $imgname);
         }
-        redirect(site_url() . 'MainSections/allsportpit');
+        redirect(site_url() . 'admin/MainSections/allsportpit');
     }
 
-// для загрузки станички  редактирования
+    // для загрузки станички  редактирования
     public function updateSp($id)
     {
         if ($id) {
@@ -168,12 +168,12 @@ class MainSections extends CI_Controller
 
     }
 
-// unlink - $file,imgname
+     // unlink - $file,imgname
     private function deleteFiles($file,$imgname){
        unlink(FCPATH."public/images/$file/".$imgname);
     }
 
-// для редактирования спортивного питание
+    // для редактирования спортивного питание
     public function updateSportpit()
     {
         $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
@@ -238,14 +238,14 @@ class MainSections extends CI_Controller
     // для загрузки всех спорт оборудований
     public function allsporteq()
     {
-        $config['base_url'] = base_url() . 'MainSections/allsporteq/';
+        $config['base_url'] = base_url() . 'admin/MainSections/allsporteq/';
         $config['total_rows'] = $this->db->count_all('equipment');
         $config['per_page'] = 10;
         $config['full_tag_open'] = '<p class="pag">';
         $config['full_tag_close'] = '</p>';
         $this->pagination->initialize($config);
         $table = 'equipment';
-        $data['sportpits'] = $this->AdminModels->selectAll($table, $config['per_page'], $this->uri->segment(3));
+        $data['sportpits'] = $this->AdminModels->selectAll($table, $config['per_page'], $this->uri->segment(4));
 
         $this->load->view('admin/header');
         $this->load->view('admin/navbar');
@@ -277,7 +277,7 @@ class MainSections extends CI_Controller
 
     }
 
-// для редактирования спортивного питание
+    // для редактирования спортивного питание
     public function updatefunctionEq()
     {
         $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',

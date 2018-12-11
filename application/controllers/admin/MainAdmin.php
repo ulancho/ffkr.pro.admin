@@ -6,8 +6,9 @@ class MainAdmin extends CI_Controller
 
     public function __construct()
     {
+
         parent::__construct();
-//        $this->load->library('session');
+        $this->load->library('session');
         $this->load->model('UserModel');
         $this->load->helper('url');
         $this->load->library('form_validation');
@@ -17,7 +18,6 @@ class MainAdmin extends CI_Controller
 //загрузка страницы логина
     public function index()
     {
-
 //        $this->load->library('password');
 //        $pwd = "123";
 //       $name =  $this->password->create_hash($pwd);
@@ -31,7 +31,6 @@ class MainAdmin extends CI_Controller
 //Проверка и redirect на админ страничку
     public function login()
     {
-        die();
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email',
             array('required' => "Поле логин обязательна.",
                 'valid_email' => "Введите полное название почты. Например:example@gmail.com"
@@ -55,14 +54,14 @@ class MainAdmin extends CI_Controller
 
             if (!$userInfo) {
                 $this->session->set_flashdata('flash_message', 'Неверный пароль или адрес электронной почты.');
-                redirect(site_url() . 'mainAdmin/login');
+                redirect(site_url() . 'admin/mainAdmin/login');
             } else {
                 $array = array(
                     'id' => $userInfo->id,
                     'login' => $userInfo->login
                 );
                 $this->session->set_userdata($array);
-                redirect(site_url() . 'mainAdmin/admin');
+                redirect(site_url() . 'admin/mainAdmin/admin');
             }
 
 
@@ -89,7 +88,7 @@ class MainAdmin extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect(site_url() . 'mainAdmin/');
+        redirect(site_url() . 'admin/mainAdmin/');
     }
 
 

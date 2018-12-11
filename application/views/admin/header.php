@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -16,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!--CSS-->
     <link rel="stylesheet" href="<?php echo base_url().'public/fontawesome/css/fontawesome-all.css' ?>">
-    <link rel="stylesheet" href="<?php echo base_url().'public/css/bootstrap.min.css' ?>">
-    <link rel="stylesheet" href="<?php echo base_url().'public/css/main.css' ?>">
-    <link rel="stylesheet" href="<?php echo base_url().'public/css/cards.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/admin/bootstrap.min.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/admin/main.css' ?>">
+    <link rel="stylesheet" href="<?php echo base_url().'public/css/admin/cards.css' ?>">
     <!--JS-->
     <script src="<?=base_url()?>public/js/jquery.min.js"></script>
 </head>

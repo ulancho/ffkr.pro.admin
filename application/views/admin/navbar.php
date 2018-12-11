@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="<?php echo site_url();?>mainAdmin/admin">Федерация Фитнеса</a>
+                  <a class="navbar-brand" href="<?php echo site_url();?>admin/mainAdmin/admin">Федерация Фитнеса</a>
                 </div>
             
                 <!-- ссылки итд -->
@@ -20,7 +20,7 @@
                             <li class="dropdown">
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-puzzle-piece" aria-hidden="true"></i>Разделы<span class="caret"></span></a>
                               <ul class="dropdown-menu">
-                                <li><a href="<?php echo site_url();?>MainSections/sportpit">Спортивное питание</a></li>
+                                <li><a href="<?php echo site_url();?>admin/MainSections/sportpit">Спортивное питание</a></li>
 <!--                                <li><a href="--><?php //echo site_url();?><!--main/adduser">Добавление пользоавтелей</a></li>-->
 <!--                                <li><a href="--><?php //echo site_url();?><!--'main/banuser">Бан пользователей</a></li>-->
 <!--                                <li><a href="--><?php //echo site_url();?><!--main/changelevel">Роли</a></li>-->
@@ -35,7 +35,7 @@
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>  <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li><a href="<?php echo base_url().'mainAdmin/logout' ?>">Выйти</a></li>
+                        <li><a href="<?php echo base_url().'admin/mainAdmin/logout' ?>">Выйти</a></li>
                       </ul>
                     </li>
                   </ul>

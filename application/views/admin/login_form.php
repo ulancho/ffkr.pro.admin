@@ -5,7 +5,7 @@
     </center>
 
     <?php $fattr = array('class' => 'form-signin');
-    echo form_open(site_url().'MainAdmin/login', $fattr); ?>
+    echo form_open(site_url().'admin/MainAdmin/login', $fattr); ?>
     <div class="form-group">
         <?php echo form_input(array(
             'name'=>'email',
