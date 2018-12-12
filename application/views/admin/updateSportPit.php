@@ -1,12 +1,12 @@
 
 <div class="col-lg-4 col-lg-offset-4">
         <strong><center>СПОРТИВНОЕ ПИТАНИЕ</center></strong>
-    <a href="<?=base_url()?>MainSections/allsportpit" class="text-primary">ПЕРЕЙТИ К ПРОСМОТРУ</a>
+    <a href="<?=base_url()?>admin/MainSections/allsportpit" class="text-primary">ПЕРЕЙТИ К ПРОСМОТРУ</a>
     <h4>Пожалуйста, введите необходимую информацию ниже</h4>
     <span class="fa fa-"></span>
     <?php
     $fattr = array('class' => 'form-signin');
-    echo form_open_multipart('/MainSections/updateSportpit', $fattr);
+    echo form_open_multipart('admin/MainSections/updateSportpit', $fattr);
     ?>
     <div class="form-group">
         <label for="">Введите название.Не больше 60 символов </label>

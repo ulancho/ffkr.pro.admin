@@ -82,7 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 ----------------------------------*/
 
 body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-family: 'Roboto', sans-serif; letter-spacing: 0px; font-size: 16px; color: #94999e; font-weight: 400; line-height: 28px;
-  background: #ADA996;  /* fallback for old browsers */
+  background: #ADA996; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
@@ -116,7 +116,10 @@ hr { border-top: 1px solid #ededed; margin-bottom: 50px; margin-top: 50px; }
 /* label */
 
 label { margin-bottom: 0px; }
-
+.logoimg{
+  height: 85px;
+  width: 110px;
+}
 /* input */
 input { }
 input[type=text] { }
@@ -574,7 +577,7 @@ img.grayscale:hover { filter: grayscale(0); opacity: 1; transition-property: fil
 -------------------------------------*/
 .slider { margin-bottom: -10px; }
 .slider-img { position: relative; width: 100%; height: 650px;}
-.slider-img img { position: relative; z-index: -1; width: 100%; height: 650px;}
+.slider-img img { position: relative; z-index: -1; width: 100%; height: auto;}
 .slider-captions { position: absolute; bottom: 180px; color: #fff; }
 .slider-title { color: #fff; font-size: 72px; font-weight: 400; line-height: 82px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 5px; }
 .slider-text { font-size: 21px; margin-bottom: 30px; line-height: 32px; }
@@ -944,7 +947,7 @@ caption { padding-top: .75rem; padding-bottom: .75rem; color: #26282c; text-alig
   .header { padding-top: 8px; padding-bottom: 8px; }
   .page-caption { padding-top: 120px; }
   .footer { padding-top: 40px; }
-  .slider-img { height: initial; }
+  .slider-img { height:400px;width: 100% }
   .slider-captions { bottom: 40px; }
   .slider-title { font-size: 32px; line-height: 42px; }
   .content { padding-top: 40px; padding-bottom: 40px; }
@@ -961,7 +964,7 @@ caption { padding-top: .75rem; padding-bottom: .75rem; color: #26282c; text-alig
   .header { padding-top: 8px; padding-bottom: 8px; }
   .page-caption { padding-top: 84px; }
   .footer { padding-top: 40px; }
-  .slider-img { height: initial; }
+  .slider-img { height: 250px; width: 100% }
   .slider-captions { bottom: 40px; }
   .slider-title { font-size: 32px; line-height: 42px; }
   .slider .owl-theme .owl-nav .owl-next { top: 69%; right: -11px; }

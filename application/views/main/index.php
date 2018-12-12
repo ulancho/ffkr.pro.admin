@@ -4,7 +4,8 @@
             <!-- slider-item -->
             <div class="item">
                 <div class="slider-img">
-                    <img src="<?=base_url()?>public/images/slider_1.jpg" alt=""></div>
+                    <img src="<?=base_url()?>public/images/slider_1.jpg" alt="">
+                </div>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">

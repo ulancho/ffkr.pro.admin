@@ -159,11 +159,11 @@ class MainSections extends CI_Controller
                 $this->load->view('admin/updateSportPit', $data);
                 $this->load->view('admin/footer');
             } else {
-                redirect(site_url() . 'mainAdmin/');
+                redirect(site_url() . 'admin/mainAdmin/');
             }
 
         } else {
-            redirect(site_url() . 'mainAdmin/');
+            redirect(site_url() . 'admin/mainAdmin/');
         }
 
     }
@@ -230,7 +230,7 @@ class MainSections extends CI_Controller
             } else {
                 $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
             }
-            redirect(site_url() . 'MainSections/updateSp/' . $id);
+            redirect(site_url() . 'admin/MainSections/updateSp/' . $id);
 
         }
     }

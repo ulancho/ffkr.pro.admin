@@ -54,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-2 col-md-12 col-sm-12 col-12">
-                    <div class="logo"> <a href="<?=base_url()?>"><img style="height: 65px;width: 115px" src="<?=base_url()?>public/images/logoat.jpg" alt=""> </a> </div>
+                    <div class="logo"> <a href="<?=base_url()?>"><img class="logoimg" src="<?=base_url()?>public/images/logoat.png" alt=""> </a> </div>
                 </div>
                 <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 col-12">
                     <!-- navigations-->
