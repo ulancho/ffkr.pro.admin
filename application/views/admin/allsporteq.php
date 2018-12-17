@@ -9,7 +9,7 @@
     <div class="well well-sm">
         <div class="row">
             <div class="pull-right">
-                <a href="<?=base_url()?>admin/MainSections/sportpit">
+                <a href="<?=base_url()?>admin/MainSections/addEq">
                 <button class="btn  btn-success ">
                     <i class="fa fa-fw fa-plus"></i>
                     Добавить
@@ -42,11 +42,11 @@
         {
             echo '<tr>';
             echo '<td>'.$i++.'</td>';
-            echo '<td><img class="photo_user" src="'.site_url().'public/images/sporteq/'.$row->eq_imgname.'" alt="">'.'</td>';
+            echo '<td><img class="photo_user" src="'.site_url().'public/images/equipment/'.$row->imgname.'" alt="">'.'</td>';
             echo '<td>'.$row->eq_name.'</td>';
             echo '<td>'.$row->eq_price.'</td>';
             echo '<td><a href="'.site_url().'admin/MainSections/updateEq/'.$row->id.'"><button type="button" class="btn btn-primary">Редактировать</button></a></td>';
-            echo '<td><a href="'.site_url().'admin/MainSections/deletesportpit/'.$row->id.'"><button type="button" class="btn btn-danger">Удалить</button></a></td>';
+            echo '<td><a href="'.site_url().'admin/MainSections/deleteEq/'.$row->id.'"><button type="button" class="btn btn-danger">Удалить</button></a></td>';
             echo '</tr>';
         }
         ?>

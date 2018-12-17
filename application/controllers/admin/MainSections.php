@@ -81,7 +81,7 @@ class MainSections extends CI_Controller
             $array['price'] = $this->input->post('price');
             $array['text'] = $this->input->post('text');
             $array['section'] = $this->input->post('section');
-            $location = 'sportpit';
+            $location = 'sport-pit';
             $imgname = 'photo';
             $ph = $this->do_upload($location, $imgname);
             if (isset($ph['upload_data'])) {
@@ -130,17 +130,13 @@ class MainSections extends CI_Controller
     public function deletesportpit($id)
     {
         $table = 'spo';
-        $result = $this->AdminModels->deleteOne($table, $id);
-        $result2 = $this->AdminModels->getId($table, $id);
-        if ($result != false) {
-            $imgname = $result->sp_imgname;
-        }
+        $puth = 'sport-pit';
+        $result = $this->AdminModels->deleteOne($table, $id,$puth);
         if ($result == FALSE) {
             $this->session->set_flashdata('flash_message', 'Упс! Произошла ошибка');
         } else {
             $this->session->set_flashdata('success_message', 'Успешно удален!');
-            $file = 'spotrpit';
-            $this->deleteFiles($file, $imgname);
+
         }
         redirect(site_url() . 'admin/MainSections/allsportpit');
     }
@@ -166,11 +162,6 @@ class MainSections extends CI_Controller
             redirect(site_url() . 'admin/mainAdmin/');
         }
 
-    }
-
-     // unlink - $file,imgname
-    private function deleteFiles($file,$imgname){
-       unlink(FCPATH."public/images/$file/".$imgname);
     }
 
     // для редактирования спортивного питание
@@ -207,7 +198,7 @@ class MainSections extends CI_Controller
             $array['price'] = $this->input->post('price');
             $array['text'] = $this->input->post('text');
             $array['section'] = $this->input->post('section');
-            $location = 'sportpit';
+            $location = 'sport-pit';
             $imgname = 'photo';
             $img = $_FILES['photo'];
             $photoname = $img['name'];
@@ -219,7 +210,7 @@ class MainSections extends CI_Controller
                 $table = 'spo';
                 $result = $this->AdminModels->getId($table, $id);
                 if ($result != false) {
-                    $namefile = $result->sp_imgname;
+                    $namefile = $result->imgname;
                     $file = 'sportpit';
                     $this->deleteFiles($file, $namefile);
                 }
@@ -268,11 +259,11 @@ class MainSections extends CI_Controller
                 $this->load->view('admin/updateEq', $data);
                 $this->load->view('admin/footer');
             } else {
-                redirect(site_url() . 'mainAdmin/');
+                redirect(site_url() . 'admin/mainAdmin/');
             }
 
         } else {
-            redirect(site_url() . 'mainAdmin/');
+            redirect(site_url() . 'admin/mainAdmin/');
         }
 
     }
@@ -280,6 +271,8 @@ class MainSections extends CI_Controller
     // для редактирования спортивного питание
     public function updatefunctionEq()
     {
+
+
         $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
             array('required' => 'Заполните название.',
                 'max_length' => 'Должно содержать не больше 60 символов.'
@@ -310,8 +303,8 @@ class MainSections extends CI_Controller
             $array['name'] = $this->input->post('name');
             $array['price'] = $this->input->post('price');
             $array['text'] = $this->input->post('text');
-            $array['section'] = $this->input->post('section');
-            $location = 'sporteq';
+            $array['phone'] = $this->input->post('phone');
+            $location = 'equipment';
             $imgname = 'photo';
             $img = $_FILES['photo'];
             $photoname = $img['name'];
@@ -323,7 +316,7 @@ class MainSections extends CI_Controller
                 $table = 'spo';
                 $result = $this->AdminModels->getId($table, $id);
                 if ($result != false) {
-                    $namefile = $result->sp_imgname;
+                    $namefile = $result->imgname;
                     $file = 'sporteq';
                     $this->deleteFiles($file, $namefile);
                 }
@@ -334,9 +327,99 @@ class MainSections extends CI_Controller
             } else {
                 $this->session->set_flashdata('success_message', 'Данные успешно обновлены.');
             }
-            redirect(site_url() . 'MainSections/updateEq/' . $id);
+            redirect(site_url() . 'admin/MainSections/updateEq/' . $id);
 
         }
+    }
+    // для удаление спорт оборудование
+    public function deleteEq($id){
+            $table = 'equipment';
+            $puth = 'equipment';
+            $result = $this->AdminModels->deleteOne($table, $id,$puth);
+            if ($result == FALSE) {
+                $this->session->set_flashdata('flash_message', 'Упс! Произошла ошибка');
+            } else {
+                $this->session->set_flashdata('success_message', 'Успешно удален!');
+            }
+            redirect(site_url() . 'admin/MainSections/allsporteq');
+
+    }
+    // для добавление спортивного оборудование
+    public function addEq(){
+        $array['name'] = $this->input->post('name');
+        $array['price'] = $this->input->post('price');
+        $array['text'] = $this->input->post('text');
+        $array['number_phone'] = $this->input->post('number_phone');
+        if (!isset($array['name']) && !isset($array['price']) && !isset($array['text']) && !isset($array['number_phone'])){
+            $array['imgerror'] = '';
+            $this->load->view('admin/header');
+            $this->load->view('admin/navbar', $array);
+            $this->load->view('admin/addEq');
+            $this->load->view('admin/footer');
+        }
+        else{
+            $this->form_validation->set_rules('name', 'First Name', 'required|trim|max_length[60]',
+                array('required' => 'Заполните название.',
+                    'max_length' => 'Должно содержать не больше 60 символов.'
+                )
+            );
+            $this->form_validation->set_rules('price', 'Last Name', 'required|trim',
+                array('required' => 'Заполните цену.')
+            );
+
+            $this->form_validation->set_rules('text', 'role', 'required|trim|max_length[220]',
+                array('required' => 'Заполните.',
+                    'max_length' => 'Должно содержать не больше 220 символов.'
+                )
+            );
+            $this->form_validation->set_rules('number_phone', 'role', 'required|trim',
+                array('required' => 'Заполните.'
+                )
+            );
+
+            if ($this->form_validation->run() == FALSE) {
+                $array['imgerror'] = '';
+                $this->load->view('admin/header');
+                $this->load->view('admin/navbar', $array);
+                $this->load->view('admin/container');
+                $this->load->view('admin/addEq');
+                $this->load->view('admin/footer');
+            } else {
+                $location = 'equipment';
+                $imgname = 'photo';
+                $ph = $this->do_upload($location, $imgname);
+                if (isset($ph['upload_data'])) {
+                    $array['imgname'] = $ph['upload_data']['file_name'];
+                    if (!$this->AdminModels->addEq($array)) {
+                        $this->session->set_flashdata('flash_message', 'Не удалось добавить данные!');
+                    } else {
+                        $this->session->set_flashdata('success_message', 'Данные успешно добавлены.');
+                    }
+                    redirect(site_url() . 'admin/MainSections/addEq');
+
+                } else {
+                    $array['imgerror'] = $ph['error'];
+                    $this->load->view('admin/header');
+                    $this->load->view('admin/navbar', $array);
+                    $this->load->view('admin/container');
+                    $this->load->view('admin/addEq');
+                    $this->load->view('admin/footer');
+                }
+
+            }
+
+
+        }
+
+
+    }
+
+    public function test(){
+        $file = 'sport-pit';
+        $imgname = 'c5cf9f304da24ce5689472793cae6b7e.jpg';
+       $n =  unlink(FCPATH."public/images/$file/".$imgname);
+        print_r($n);
+        die();
     }
 
 }

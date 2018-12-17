@@ -68,7 +68,7 @@
                                         <li><a href="<?=base_url()?>main/education">Обучение</a></li>
                                         <li><a href="<?=base_url()?>main/sport_eat">Спортивное питание</a></li>
                                         <li><a href="farma.html">Фарма</a></li>
-                                        <li><a href="equipment.html">Спортивное оборудование</a></li>
+                                        <li><a href="<?=base_url()?>main/equipment">Спортивное оборудование</a></li>
                                     </ul>
                                 </li>
                                 <li class="active"><a href="<?=base_url()?>Main/clubs">Клубы города</a></li>

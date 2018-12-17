@@ -18,7 +18,7 @@ class AdminModels extends CI_Model
             'sp_price' => $d['price'],
             'sp_inf' => $d['text'],
             'sp_sections' => $d['section'],
-            'sp_imgname' => $d['imgname'],
+            'imgname' => $d['imgname'],
         );
         $q = $this->db->insert_string('spo', $string);
         return $this->db->query($q);
@@ -33,7 +33,7 @@ class AdminModels extends CI_Model
                 'sp_price' => $arr['price'],
                 'sp_inf' => $arr['text'],
                 'sp_sections' => $arr['section'],
-                'sp_imgname' => $arr['imgname']
+                'imgname' => $arr['imgname']
             );
         }
         else{
@@ -64,7 +64,8 @@ class AdminModels extends CI_Model
                 'eq_name' => $arr['name'],
                 'eq_price' => $arr['price'],
                 'eq_inf' => $arr['text'],
-                'eq_imgname' => $arr['imgname']
+                'eq_phone' => $arr['phone'],
+                'imgname' => $arr['imgname']
             );
         }
         else{
@@ -72,11 +73,12 @@ class AdminModels extends CI_Model
                 'eq_name' => $arr['name'],
                 'eq_price' => $arr['price'],
                 'eq_inf' => $arr['text'],
+                'eq_phone' => $arr['phone']
             );
         }
 
         $this->db->where('id', $arr['id']);
-        $q = $this->db->update('spo', $data);
+        $q = $this->db->update('equipment', $data);
 
         $success = $this->db->affected_rows();
 
@@ -108,24 +110,35 @@ class AdminModels extends CI_Model
     }
 
 // Удаление изобр из папки
-    private function deleteFiles($name)
+    private function deleteFiles($name, $puth)
     {
-        return unlink(FCPATH . "public/images/sportpit/" . $name);
+        return unlink(FCPATH . "public/images/$puth/" . $name);
     }
 
 // Delete по id и tablename
-    public function deleteOne($table, $id)
+    public function deleteOne($table, $id, $puth = '')
     {
         $con = $this->getId($table, $id);
-        $name = $con->sp_imgname;
+        $name = $con->imgname;
         $this->db->where('id', $id);
         $this->db->delete($table);
         if ($this->db->affected_rows() == '1') {
-            $this->deleteFiles($name);
+            $this->deleteFiles($name,$puth);
             return TRUE;
         } else {
             return FAlSE;
         }
+    }
+    public function addEq($arr){
+        $string = array(
+            'eq_name' => $arr['name'],
+            'eq_price' => $arr['price'],
+            'eq_inf' => $arr['text'],
+            'eq_phone' => $arr['number_phone'],
+            'imgname' => $arr['imgname'],
+        );
+        $q = $this->db->insert_string('equipment', $string);
+        return $this->db->query($q);
     }
 
 }

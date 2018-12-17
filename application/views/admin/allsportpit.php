@@ -42,7 +42,7 @@
         {
             echo '<tr>';
             echo '<td>'.$i++.'</td>';
-            echo '<td><img class="photo_user" src="'.site_url().'public/images/sportpit/'.$row->sp_imgname.'" alt="">'.'</td>';
+            echo '<td><img class="photo_user" src="'.site_url().'public/images/sport-pit/'.$row->imgname.'" alt="">'.'</td>';
             echo '<td>'.$row->sp_name.'</td>';
             echo '<td>'.$row->sp_price.'</td>';
             echo '<td><a href="'.site_url().'admin/MainSections/updateSp/'.$row->id.'"><button type="button" class="btn btn-primary">Редактировать</button></a></td>';

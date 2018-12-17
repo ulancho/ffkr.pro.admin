@@ -72,6 +72,12 @@ class Main extends CI_Controller
         $this->load->view('main/modal');
         $this->load->view('main/footer/footer');
     }
+    public function equipment(){
+        $this->load->view('main/header/header');
+        $this->load->view('main/equipment');
+        $this->load->view('main/modal');
+        $this->load->view('main/footer/footer');
+    }
 
 
 }
