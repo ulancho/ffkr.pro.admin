@@ -104,3 +104,16 @@
     z-index: 9999;
 }
 /*...personal internet-trener*/
+/* one clubs*/
+.three{
+    margin: 3px;
+    height:60px;
+    width:80%;
+    background-color: #cecece;
+    border-radius: 5px;
+}
+/*...one clubs*/
+.flex-align-center{
+    display: flex;
+    align-items: center;
+}

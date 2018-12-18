@@ -108,14 +108,6 @@
                 <!-- pagination close -->
             </div>
             <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12">
-                <!-- widget-search -->
-                <div class="widget-search mb-1">
-                    <form role="search">
-                        <input class="form-control" placeholder="Найти" type="text">
-                        <button class="" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <!-- /.widget-search -->
                 <!-- categories -->
                 <div class="widget widget-categories">
                     <h4 class="widget-title">Категории</h4>

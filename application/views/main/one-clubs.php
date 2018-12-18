@@ -97,28 +97,37 @@
                     <!-- /.benifits -->
                     <!-- benifits -->
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                        <h3>Наши премущества</h3>
-                        <div class="feature-list">
-                            <ul class="list-unstyled arrow">
-                                <li>Список список список</li>
-                                <li>Список список список</li>
-                                <li>NСписок список список.</li>
-                                <li>Список список список.</li>
-                                <li>Список список список.</li>
-                            </ul>
-                        </div>
+                     <div class="three col-sm-12 row flex-align-center">
+                         <div class="col-sm-2">
+                             <img src="<?=base_url()?>public/fonticons/clubsicon/location.png" alt="">
+                         </div>
+                         <div class="color-sm-10">
+                             <p>Токтогула 102\2</p>
+                         </div>
+                     </div>
+
+
+                     <div class="three col-sm-12 row flex-align-center">
+                         <div class="col-sm-2">
+                             <img src="<?=base_url()?>public/fonticons/clubsicon/call.png" alt="">
+                         </div>
+                         <div class="color-sm-10">
+                             <p>0555 55 01 05</p>
+                         </div>
+                     </div>
+                     <div class="three col-sm-12 row flex-align-center">
+                         <div class="col-sm-2">
+                             <img src="<?=base_url()?>public/fonticons/clubsicon/chasy.png" alt="">
+                         </div>
+                         <div class="color-sm-10">
+                             <p>Токтогула 102\2</p>
+                         </div>
+                     </div>
                     </div>
                     <!-- /.benifits -->
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <!-- map-section -->
-        <div id="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.3131769375827!2d74.58302731494257!3d42.84511997915726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x389ec9dbba5623ef%3A0x394befb9923dade1!2sManas+Cinema!5e0!3m2!1sen!2skg!4v1530256120973" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <!-- /.map-section -->
     </div>
 </div>
 <!-- /.classes -->
